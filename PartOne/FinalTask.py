@@ -1,37 +1,51 @@
-#Function to do reporting
-def adding_report(value,theType): #taking in two variables, for value in the current loop and what report value is required.
-    if value != "q":                #checking if value is no q, to start reporting
-        theList.append(value)       #if no reporting needed, append data list
-    elif value == "q":              #if we do need to start reporting
-        if theType is "A":          #check if report type is A
-            sumVariable = 0         #predefined variable for sum in Total
-            print("Items: ")        #user interface Stuff
-            for variable in theList:    #list to go thru the list of values
-                print(variable)         #prints every value in the loop
-                sumVariable += variable     #summing stuff up in the sum variable
-            print("Total Value: " + str(sumVariable))   #Showing total value
-        elif theType is "T":    #if report type is T
-            sumVariable = 0     #predefine Sum variable
+#program that is letting person to enter as much digits as he wants and after a operator "q" is eneter would break
+#of data entering loop, would do one of two reports
+#A detailed reports with all values and total and T for only total value of everything that he has entered
+
+#function that will sum up the values and treat them as per task, based on the values that is provided to it
+def adding_report(value,theType):
+    if value != "q":
+        theList.append(value)
+    elif value == "q":
+        #detailed report stuff
+        if theType is "A":
+            sumVariable = 0
+            print("Items: ")
+            for variable in theList:
+                print(variable)
+                sumVariable += variable
+            print("Total Value: " + str(sumVariable))
+        #Total report Stuff
+        elif theType is "T":
+            sumVariable = 0
             for variable in theList:
                 sumVariable += variable
             print("Total Value: " + str(sumVariable))
 
+#pre defined list variable
+theList = []
 
-theList = []   #defined theList to collect data
-
-print("What type of reporting will you want? 'A' for detailed, and 'T' for only total value? ")  #user interface Stuff
-reportType = input()        #User input what type od report will be required
-while True:     #infinite While loop while not broken
-    print("Provide the numeric value sum them up, if you wish to finish write something with q as a first letter.")     #User interface Stuff
-    tempValue = input()     #user input the number or Q
-    if tempValue.isdigit(): #check if the value provided is digit, as it will not be Q then.
-        additionalValue = int(tempValue)        #making this variable a Init
-        adding_report(additionalValue, reportType)  #calling my wonderful function to take value and reporting type
-    elif tempValue.startswith("q") or tempValue.startswith("Q"):   #if temp value will at least start with a q or Q
-        adding_report("q", reportType)  #sending signal to my function start preping them reports.
-        break           #break the loop if reporting is done
-    else:                   #if client just decided to click random buttons instead of digits or quiting
-        print("Invalid input, sorry mate")      #let him know is going on
-        continue    #start loop over.
-
+#prompt to select type of reporting
+print("What type of reporting will you want? 'A' for detailed, and 'T' for only total value? ")
+reportType = input()
+#Checking report value, to avoid unexpected outcomes
+if reportType == "A" or reportType == "T":
+    #loop to collect data
+    while True:
+        print("Provide the numeric value sum them up, if you wish to finish write q or Quit")
+        tempValue = input()
+        #as long as value is digit it will not be a "q", therefore we just sending information to our function to add the values to list.
+        if tempValue.isdigit():
+            additionalValue = int(tempValue)
+            adding_report(additionalValue, reportType)
+        #if client chose to stop entering values, send the signal to function, stop loop once any reporting is done
+        elif tempValue.startswith("q") or tempValue.startswith("Q"):
+            adding_report("q", reportType)
+            break
+        #start loop over with prompt to person, that value he entered is not valid
+        else:
+            print("Invalid input, sorry mate")
+            continue
+else:
+    print("We can not provide this type of reporting at this time, please, start over, choose from what we have")
 

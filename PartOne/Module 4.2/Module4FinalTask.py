@@ -1,26 +1,31 @@
-#ciklas laukia ne tuščios reikšmės ir ją radus iš esmės įvertina ar tai skaičius ar stringas, tada skaičių palygina ar didelis ar ne
-# ir parašo žmogui ką suprato, o jeigu stringas tai įvertina ar vien tik simboliai ar ir skaiciu yra
-def str_analysis(var):  #funkcija pasiimanti input reiksme
-    if var.isdigit():       #patikrinam ar skaicius
-        newVar = int(var)       #jeigu skaicius paverciam i tikra skaiciu
-        if newVar > 99:     #patikrinam ar didelis skaicius
-            print("Big number")
-        else:           #patikrinam ar mazas skaicius
-            print("Small Number")
+#infinite loop is just waiting for a break statment, inside of it we check if variable is present
+#if yes we start str_analysis function that is checking if it is a digit and if it is big or small then, prints that
+#if it is not a digit, but present, it will check if all values are string or not, prints results
+#if value is not provided loop will start over asking to enter a value
 
-    else:           #jeigu stringas
-        newVar = str(var)       #tik kad buciau 100% tikras kad stringas
-        if newVar.isalpha():        #ar tik stringai
+#function that evaluates the provided values
+def str_analysis(var):
+#digit part
+    if var.isdigit():
+        newVar = int(var)
+        if newVar > 99:
+            print("Big number")
+        else:
+            print("Small Number")
+#string part
+    else:
+        newVar = str(var)
+        if newVar.isalpha():
             print("Text is all Alpha")
-        else:               #nei stringas, nei skaicius
+        else:
             print("Value not all alpha, not all digits")
 
-
-while True:     #infinite loop while not break
-    print("Provide Value")      #user interface
-    var = input()           #zmogus įveda skaiciu
-    if var or var == 0:         #jeigu reiksme ira ivesta, su mazu buffu, nes 0 butu irgi bool false, tai uzdejau dar ir ta
-        str_analysis(var)       #paleidziam funkcija viskam nusprest
-        break       #stabdom cikla
+#loop that only checks if value is placed in, and acts if there is a value, repeats if there is none
+while True:
+    print("Provide Value")
+    var = input()
+    if var or var == 0:
+        str_analysis(var)
+        break
     else:
-        continue   #tesiam cikla
+        continue
