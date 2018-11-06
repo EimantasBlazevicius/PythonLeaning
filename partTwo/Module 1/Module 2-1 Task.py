@@ -2,9 +2,7 @@
 #go thru every cahracter of each word, add letters to words, if all word is alpha save it if first letter of the word
 #is h print the word in caps.
 
-print("provide the quote you would like to iterate via this wonderful app: ")
-quote = input()
-var = quote.lower()
+quote = input("provide the quote you would like to iterate via this wonderful app: ").lower()
 for word in var.split():
     if word[0] >= "h":
         print(word.capitalize())
