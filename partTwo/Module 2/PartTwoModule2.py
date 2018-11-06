@@ -19,6 +19,8 @@ def list_o_matic(word, list):
     elif word == "":
         list.pop()
         prompt = "The last value of this list was removed"
+    else:
+        pass
     #function return value
     return prompt
 

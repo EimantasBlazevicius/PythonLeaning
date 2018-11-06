@@ -3,7 +3,7 @@
 #is h print the word in caps.
 
 quote = input("provide the quote you would like to iterate via this wonderful app: ").lower()
-for word in var.split():
+for word in quote.split():
     if word[0] >= "h":
         print(word.capitalize())
     else:
