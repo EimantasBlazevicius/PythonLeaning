@@ -30,8 +30,8 @@ theList = ["Homer", "Marge", "Bart", "Lisa", "Ned"]
 #and keeps moving forward
 while theList:
     print("This is the list of names we have at the moment: " + str(theList))
-    theWord = input("enter the name: ")
-    if theWord == "Quit":
+    theWord = input("enter the name: ").lower()
+    if theWord == "quit":
         break
     else:
         print(list_o_matic(theWord, theList))
