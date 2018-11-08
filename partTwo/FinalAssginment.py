@@ -28,6 +28,7 @@ def getuservalues():
             continue
         elif userinput in theGuesses:
             print("Error: No Duplicate values are allowed")
+            continue
         else:
             theGuesses.append(userinput)
     return theGuesses
