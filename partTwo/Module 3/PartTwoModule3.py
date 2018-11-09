@@ -25,7 +25,7 @@ def word_mixer(tempList):
 tempList = []
 #input of the original string
 originalString = input("Please provide you text, for us to make very artistic, in a weird way: ").lower()
-wordsList = originalString.split()
+wordsList = originalString.split(" ")
 howMuchWords = len(wordsList)
 for var in range(howMuchWords):
     if len(wordsList[var]) <= 3:
