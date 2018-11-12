@@ -1,6 +1,7 @@
 
 import argparse
 
+
 def parse_command_line():
     """
     Parse the command line arguments and return the parse_args object.
@@ -55,10 +56,13 @@ def read_file(file_path):
     returns:
         message: content of file in file_path as a string
     """
-    with open(file_path) as file:
-        data = file.read()
-        return data
-            
+    try:
+        with open(file_path) as file:
+            data = file.read()
+            return data
+    except IOError:
+        return "FILE MISSING!"
+                
 def write_file(message, file_path):
     """
     Write the message in file_path.
@@ -72,9 +76,13 @@ def write_file(message, file_path):
     returns:
         None
     """
-    msg = str(message)
-    with open(file_path, 'w') as file:
-        file.write(msg)
+    try:
+        msg = str(message)
+        with open(file_path, 'w') as file:
+            file.write(msg)
+    except IOError:
+        return "Can not create file in the directory"
+        
         
 
 def transform(message, key, decrypt):
@@ -101,7 +109,7 @@ def transform(message, key, decrypt):
     decrypted = ""
     if decrypt is False:
         for letter in message:
-            encrypted += str(shift(letter, key))
+            encrypted += str(shift(letter, key[0]))
         return encrypted
     elif decrypt is True:
         for letter in message:
