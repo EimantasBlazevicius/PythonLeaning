@@ -61,11 +61,12 @@ def create_date(datelist, surprise):
         try:
             datelist_new = datetime(int(datelist[2]), int(datelist[1]), int(datelist[0]))
             if datelist_new > datetime.now() or datelist_new < start_date:
-                return "None, value is out of range"
+                return "Nope, value is out of range"
             else:
-                return datelist_new
+                pass
         except ValueError:
             print("Incorrect data format, should be YYYY-MM-DD")
+        return datelist_new
             
     elif not datelist and surprise:
         try:
